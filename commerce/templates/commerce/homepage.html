@@ -1,0 +1,28 @@
+{% extends 'commerce/common.html' %}
+
+{% block content %}
+    <div class="container my-5 text-center" style="max-width:580px">
+        <h1>NEGOZIO ONLINE</h1>
+        <p class="lead">Cerca e trova tutto ciò di cui hai bisogno</p>
+        <a href="{% url 'carrello' %}" type="button" class="btn btn-primary">Aggiungi al carrello</a>
+        <a href="{% url 'contattaci' %}" type="button" class="btn btn-secondary">Contattaci</a>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            {% for product in products %}
+            <div class="col-sm">
+                <div class="card" style="width: 18rem;">
+                    <img src="{{ product.immagine.url }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.nome }}</h5>
+                        <p class="card-text">{{ product.descrizione }}</p>
+                        <p class="card-text">€ {{ product.prezzo }}</p>
+                        <a href="#" class="btn btn-primary">Acquista</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
